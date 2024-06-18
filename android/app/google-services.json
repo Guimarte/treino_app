@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "964020889135",
+    "project_id": "treino-44482",
+    "storage_bucket": "treino-44482.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964020889135:android:2fd445c7ccd66af57fc8da",
+        "android_client_info": {
+          "package_name": "com.example.treino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6o1nyCcP4RWcgaPlYAgeFptX8ZminjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964020889135:android:9c52d118ee279fce7fc8da",
+        "android_client_info": {
+          "package_name": "com.example.treino_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6o1nyCcP4RWcgaPlYAgeFptX8ZminjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
