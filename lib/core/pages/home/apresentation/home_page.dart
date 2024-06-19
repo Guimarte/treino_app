@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:treino_app/core/utils/widgets/drawer_widget.dart';
+import 'package:treino_app/core/shared/widgets/drawer_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

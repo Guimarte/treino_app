@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:treino_app/core/utils/widgets/drawer_option.dart';
+import 'package:treino_app/core/shared/widgets/drawer_option.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
