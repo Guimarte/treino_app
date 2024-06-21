@@ -10,6 +10,7 @@ import 'package:treino_app/core/shared/widgets/text_field_exercise_video.dart';
 import 'package:treino_app/pages/form_exercise/bloc/form_exercise_bloc.dart';
 import 'package:treino_app/pages/form_exercise/bloc/form_exercise_event.dart';
 import 'package:treino_app/pages/form_exercise/bloc/form_exercise_state.dart';
+import 'package:uuid/uuid.dart';
 
 class FormExercisePage extends StatelessWidget {
   FormExercisePage({super.key});
@@ -75,12 +76,14 @@ class FormExercisePage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: PrincipalButton(
                   function: () {
+                    Uuid uuid = const Uuid();
                     ExerciseModel exerciseModel = ExerciseModel(
                         description:
                             textExerciseDescriptionController.value.text,
                         nameExercise: textNameController.value.text,
                         limb: limb.name,
-                        urlVideo: textUrlController.value.text);
+                        urlVideo: textUrlController.value.text,
+                        id: uuid.v4());
 
                     context.read<FormExerciseBloc>().add(
                         FormExerciseEventSendForm(

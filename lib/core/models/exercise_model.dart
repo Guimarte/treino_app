@@ -1,16 +1,20 @@
 class ExerciseModel {
+  String id;
   String nameExercise;
   String urlVideo;
   String description;
   String limb;
 
-  ExerciseModel(
-      {required this.description,
-      required this.nameExercise,
-      required this.limb,
-      required this.urlVideo});
+  ExerciseModel({
+    required this.id,
+    required this.nameExercise,
+    required this.urlVideo,
+    required this.description,
+    required this.limb,
+  });
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'nameExercise': nameExercise,
       'urlVideo': urlVideo,
       'description': description,
@@ -20,10 +24,12 @@ class ExerciseModel {
 
   factory ExerciseModel.fromJson(Map<String, dynamic> json) {
     return ExerciseModel(
-        description: json['description'],
-        nameExercise: json['nameExercise'],
-        limb: json['limb'],
-        urlVideo: json['urlVideo']);
+      id: json['id'],
+      nameExercise: json['nameExercise'],
+      urlVideo: json['urlVideo'],
+      description: json['description'],
+      limb: json['limb'],
+    );
   }
 
   static List<ExerciseModel> listFromJson(List<dynamic> jsonList) {
