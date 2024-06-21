@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:treino_app/core/enums/limbs.dart';
 import 'package:treino_app/core/models/exercise_model.dart';
-import 'package:treino_app/core/pages/form_exercise/bloc/form_exercise_bloc.dart';
-import 'package:treino_app/core/pages/form_exercise/bloc/form_exercise_event.dart';
-import 'package:treino_app/core/pages/form_exercise/bloc/form_exercise_state.dart';
 import 'package:treino_app/core/shared/widgets/dropdown_limbs.dart';
 import 'package:treino_app/core/shared/widgets/principal_button.dart';
 import 'package:treino_app/core/shared/widgets/text_field_exercise_description.dart';
 import 'package:treino_app/core/shared/widgets/text_field_exercise_name.dart';
 import 'package:treino_app/core/shared/widgets/text_field_exercise_video.dart';
+import 'package:treino_app/pages/form_exercise/bloc/form_exercise_bloc.dart';
+import 'package:treino_app/pages/form_exercise/bloc/form_exercise_event.dart';
+import 'package:treino_app/pages/form_exercise/bloc/form_exercise_state.dart';
 
 class FormExercisePage extends StatelessWidget {
   FormExercisePage({super.key});
@@ -57,8 +57,14 @@ class FormExercisePage extends StatelessWidget {
                           )
                         ],
                       );
-                    } else if (state is FormExerciseStateLoading) {
+                    }
+                    if (state is FormExerciseStateLoading) {
                       return const Center(child: CircularProgressIndicator());
+                    }
+                    if (state is FormExerciseStateError) {
+                      return Center(
+                        child: Text(state.error),
+                      );
                     } else {
                       return const SizedBox();
                     }

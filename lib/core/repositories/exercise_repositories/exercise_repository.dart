@@ -4,14 +4,10 @@ import 'package:treino_app/core/models/exercise_model.dart';
 class ExerciseRepository {
   Future insertNewExercise(ExerciseModel exerciseModel) async {
     final db = FirebaseFirestore.instance;
+    final docData = db.collection('treino_app').doc('exercises');
 
-    final docData = db
-        .collection('treino_app')
-        .withConverter(
-            fromFirestore: ExerciseModel.fromFirestore,
-            toFirestore: (ExerciseModel exerciseModel, options) =>
-                exerciseModel.toFirestore())
-        .doc('exercises');
-    await docData.set(exerciseModel);
+    await docData.update({
+      'listExercises': FieldValue.arrayUnion([exerciseModel.toJson()])
+    });
   }
 }
