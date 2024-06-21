@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class ExerciseModel {
   String nameExercise;
   String urlVideo;
@@ -30,26 +28,5 @@ class ExerciseModel {
 
   static List<ExerciseModel> listFromJson(List<dynamic> jsonList) {
     return jsonList.map((json) => ExerciseModel.fromJson(json)).toList();
-  }
-
-  factory ExerciseModel.fromFirestore(
-      DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions? options) {
-    final data = snapshot.data();
-    return ExerciseModel(
-      nameExercise: data?['nameExercise'],
-      description: data?['description'],
-      limb: data?['limb'],
-      urlVideo: data?['urlVideo'],
-    );
-  }
-
-  Map<String, dynamic> toFirestore() {
-    return {
-      "nameExercise": nameExercise,
-      "description": description,
-      "limb": limb,
-      "urlVideo": urlVideo,
-    };
   }
 }
