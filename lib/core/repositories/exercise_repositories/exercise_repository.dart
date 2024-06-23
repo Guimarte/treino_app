@@ -10,4 +10,19 @@ class ExerciseRepository {
       'listExercises': FieldValue.arrayUnion([exerciseModel.toJson()])
     });
   }
+
+  Future<List<ExerciseModel>> getListExercises() async {
+    final db = FirebaseFirestore.instance;
+    final docData = db.collection('treino_app').doc('exercises');
+    final docSnapshot = await docData.get();
+
+    if (docSnapshot.exists) {
+      final data = docSnapshot.data() as Map<String, dynamic>;
+      final List<dynamic> exercises = data['listExercises'];
+
+      return ExerciseModel.listFromJson(exercises);
+    } else {
+      return [];
+    }
+  }
 }

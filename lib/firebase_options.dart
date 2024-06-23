@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'treino-44482.appspot.com',
     measurementId: 'G-3GBHS1QZ5G',
   );
+
 }

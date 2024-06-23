@@ -2,9 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:treino_app/firebase_options.dart';
-import 'package:treino_app/pages/form_exercise/apresentation/form_exercise_page.dart';
 import 'package:treino_app/pages/form_exercise/bloc/form_exercise_bloc.dart';
-import 'package:treino_app/pages/home/apresentation/home_page.dart';
+import 'package:treino_app/pages/form_exercise/presentation/form_exercise_page.dart';
+import 'package:treino_app/pages/home/bloc/home_bloc.dart';
+import 'package:treino_app/pages/home/bloc/home_event.dart';
+import 'package:treino_app/pages/home/presentation/home_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,12 +27,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
       initialRoute: '/home',
       routes: {
-        '/home': (_) => const HomePage(),
+        '/home': (_) => BlocProvider(
+              create: (_) => HomeBloc()..add(HomeLoadListEvent()),
+              child: const HomePage(),
+            ),
         '/form': (_) => BlocProvider(
-            create: (_) => FormExerciseBloc(), child: FormExercisePage())
+              create: (_) => FormExerciseBloc(),
+              child: FormExercisePage(),
+            )
       },
     );
   }

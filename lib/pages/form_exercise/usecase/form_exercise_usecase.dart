@@ -1,11 +1,11 @@
 import 'package:treino_app/core/models/exercise_model.dart';
 import 'package:treino_app/core/repositories/exercise_repositories/exercise_repository.dart';
 
-abstract class FormExerciseUseCase {
+abstract class PutFormExerciseUseCase {
   Future call({required ExerciseModel exerciseModel});
 }
 
-class FormExerciseUseCaseImplementation implements FormExerciseUseCase {
+class PutFormExerciseUseCaseImplementation implements PutFormExerciseUseCase {
   ExerciseRepository exerciseRepository = ExerciseRepository();
 
   @override
