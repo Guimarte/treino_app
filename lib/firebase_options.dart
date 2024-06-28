@@ -64,6 +64,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '964020889135',
     projectId: 'treino-44482',
     storageBucket: 'treino-44482.appspot.com',
+    iosClientId: '964020889135-bfnvcsj7nth0eb2bge8mb9plsr7jjfgb.apps.googleusercontent.com',
     iosBundleId: 'com.example.treinoApp',
   );
 
@@ -73,6 +74,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '964020889135',
     projectId: 'treino-44482',
     storageBucket: 'treino-44482.appspot.com',
+    iosClientId: '964020889135-bfnvcsj7nth0eb2bge8mb9plsr7jjfgb.apps.googleusercontent.com',
     iosBundleId: 'com.example.treinoApp',
   );
 

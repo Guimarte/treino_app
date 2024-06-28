@@ -1,12 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:treino_app/core/shared/utils/theme_app.dart';
 import 'package:treino_app/firebase_options.dart';
 import 'package:treino_app/pages/form_exercise/bloc/form_exercise_bloc.dart';
 import 'package:treino_app/pages/form_exercise/presentation/form_exercise_page.dart';
 import 'package:treino_app/pages/home/bloc/home_bloc.dart';
 import 'package:treino_app/pages/home/bloc/home_event.dart';
 import 'package:treino_app/pages/home/presentation/home_page.dart';
+import 'package:treino_app/pages/login/bloc/login_bloc.dart';
+import 'package:treino_app/pages/login/presentation/login_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,12 +25,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: '/home',
+      theme: ThemeApp().themeData,
+      initialRoute: '/login',
       routes: {
         '/home': (_) => BlocProvider(
               create: (_) => HomeBloc()..add(HomeLoadListEvent()),
@@ -36,6 +37,10 @@ class MyApp extends StatelessWidget {
         '/form': (_) => BlocProvider(
               create: (_) => FormExerciseBloc(),
               child: FormExercisePage(),
+            ),
+        '/login': (_) => BlocProvider(
+              create: (context) => LoginBloc(),
+              child: LoginPage(),
             )
       },
     );

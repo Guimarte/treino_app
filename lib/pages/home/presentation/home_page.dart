@@ -13,7 +13,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text('Home')),
+        appBar: AppBar(
+          title: const Text(
+            'Home',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         endDrawer: const DrawerWidget(),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
@@ -32,6 +37,7 @@ class HomePage extends StatelessWidget {
                       exerciseName: state.exerciseList[index].nameExercise,
                       exerciseUrlVideo: state.exerciseList[index].urlVideo,
                       limb: state.exerciseList[index].limb,
+                      day: state.exerciseList[index].exerciseDay,
                       openUrlVideoFunction: () {
                         context.read<HomeBloc>().add(HomeOpenVideoEvent(
                             url: state.exerciseList[index].urlVideo));

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
+import 'package:treino_app/core/enums/exercise_day.dart';
 import 'package:treino_app/core/enums/limbs.dart';
 import 'package:treino_app/core/models/exercise_model.dart';
+import 'package:treino_app/core/shared/widgets/dropdown_exercise_day.dart';
 import 'package:treino_app/core/shared/widgets/dropdown_limbs.dart';
 import 'package:treino_app/core/shared/widgets/principal_button.dart';
 import 'package:treino_app/core/shared/widgets/text_field_exercise_description.dart';
@@ -19,7 +22,7 @@ class FormExercisePage extends StatelessWidget {
   TextEditingController textExerciseDescriptionController =
       TextEditingController();
   late Limbs limb;
-
+  late ExerciseDay exerciseDay;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,6 +41,13 @@ class FormExercisePage extends StatelessWidget {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const Text(
+                            "Novo exercício",
+                            style: TextStyle(fontSize: 30),
+                          ),
+                          Lottie.asset('assets/images/tes.json',
+                              width: MediaQuery.sizeOf(context).width * 0.4,
+                              height: MediaQuery.sizeOf(context).height * 0.2),
                           TextFieldExerciseName(
                             textEditingController: textNameController,
                           ),
@@ -54,6 +64,12 @@ class FormExercisePage extends StatelessWidget {
                           DropdownLimbs(
                             function: (v) {
                               limb = v!;
+                            },
+                          ),
+                          const SizedBox(height: 10),
+                          DropdownExerciseDay(
+                            function: (v) {
+                              exerciseDay = v!;
                             },
                           )
                         ],
@@ -83,6 +99,7 @@ class FormExercisePage extends StatelessWidget {
                         nameExercise: textNameController.value.text,
                         limb: limb.name,
                         urlVideo: textUrlController.value.text,
+                        exerciseDay: exerciseDay.toString(),
                         id: uuid.v4());
 
                     context.read<FormExerciseBloc>().add(

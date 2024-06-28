@@ -9,11 +9,13 @@ class ExerciseCard extends StatelessWidget {
       required this.exerciseDescription,
       required this.exerciseUrlVideo,
       required this.limb,
-      required this.openUrlVideoFunction});
+      required this.openUrlVideoFunction,
+      required this.day});
   String exerciseName;
   String exerciseDescription;
   String exerciseUrlVideo;
   String limb;
+  String day;
   Function() openUrlVideoFunction;
 
   @override
@@ -34,6 +36,7 @@ class ExerciseCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    TextExerciseCard(description: 'Dia: ', text: day),
                     TextExerciseCard(
                         description: 'Exercicio: ', text: exerciseName),
                     TextExerciseCard(

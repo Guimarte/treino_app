@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:treino_app/core/enums/exercise_day.dart';
 
-import '../../enums/limbs.dart';
+class DropdownExerciseDay extends StatefulWidget {
+  DropdownExerciseDay({super.key, required this.function});
 
-class DropdownLimbs extends StatefulWidget {
-  DropdownLimbs({super.key, required this.function});
-
-  Function(Limbs?) function;
+  Function(ExerciseDay?) function;
 
   @override
-  State<DropdownLimbs> createState() => _DropdownLimbsState();
+  State<DropdownExerciseDay> createState() => _DropdownLimbsState();
 }
 
-class _DropdownLimbsState extends State<DropdownLimbs> {
-  Limbs? limbsSelected;
+class _DropdownLimbsState extends State<DropdownExerciseDay> {
+  ExerciseDay? exerciseDaySelected;
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +24,27 @@ class _DropdownLimbsState extends State<DropdownLimbs> {
             const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
       ),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<Limbs>(
-          focusColor: Colors.transparent,
+        child: DropdownButton<ExerciseDay>(
           dropdownColor: const Color(0xff666666),
+          focusColor: Colors.transparent,
           hint: Text(
-            limbsSelected == null
-                ? "Escolha o membro desse exercicio"
-                : limbsSelected!.name,
+            exerciseDaySelected == null
+                ? "Escolha o dia do exercicio"
+                : exerciseDaySelected!.name,
             style: const TextStyle(color: Color(0xFFFFFFFF)),
             textAlign: TextAlign.center,
           ),
-          items: Limbs.values
-              .map((opcao) => DropdownMenuItem<Limbs>(
+          items: ExerciseDay.values
+              .map((opcao) => DropdownMenuItem<ExerciseDay>(
                     value: opcao,
                     child: Text(
                       opcao.name,
                     ),
                   ))
               .toList(),
-          onChanged: (Limbs? value) {
+          onChanged: (ExerciseDay? value) {
             setState(() {
-              limbsSelected = value;
+              exerciseDaySelected = value;
             });
             widget.function(value);
           },
